@@ -1,0 +1,217 @@
+h6 {
+    color: white;
+    font-size: 17px;
+    padding: 5px;
+}
+
+.img-circle {
+    border-radius: 50%
+}
+
+#sidebar-toggle {
+    background-color: transparent;
+}
+
+.navbar-static-top {
+    padding-left: 0px;
+    padding-right: 0px;
+    margin-top: 0;
+    padding-top: 0px;
+    padding-bottom: 2%;
+    height: 1px;
+}
+
+.btn {
+    border-radius: 5px;
+    font-size: small;
+    padding: 6px;
+    color: white;
+    font-weight: 500;
+    float: left;
+    margin-left: 10%;
+}
+
+.dropdown-menu {
+    margin-top: 7%;
+}
+
+
+/* #chnbtn
+{
+    text-decoration: none;
+    margin-left:2%;
+    margin-right:2%;
+    color: white;
+} */
+
+.modal {
+    background-image: url("/assets/images/globe.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position-y: bottom;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.profile-img {
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border: 2px solid #ddd;
+}
+
+.box {
+    width: 500px;
+    border-radius: 15px;
+    position: absolute;
+    margin-top: 55%;
+    padding: 40px;
+    top: 50%;
+    left: 10%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(white, grey);
+    text-align: center;
+    box-shadow: 15px 15px 10px rgb(56, 56, 56);
+    opacity: 0.9;
+}
+
+.box a {
+    color: black;
+}
+
+.box a:hover {
+    color: rgb(45, 109, 219);
+    font-weight: 5000;
+    font-size: large;
+}
+
+.box h1 {
+    color: black;
+    font-size: x-large;
+    /* text-shadow: 2px 2px 5px whitesmoke; */
+}
+
+.box input[type="text"],
+.box input[type="password"] {
+    border: none;
+    border: 2px solid white;
+    ;
+    border-radius: 5px;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    padding: 14px 10px;
+    width: 275px;
+    outline: none;
+    color: black;
+    transition: 0.25s;
+}
+
+.box input[type="text"]:focus,
+.box input[type="password"]:focus {
+    width: 300px;
+    border-color: #82c59e;
+    box-shadow: 0 0 4px 2px white;
+}
+
+::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: black;
+    opacity: 1;
+    /* Firefox */
+}
+
+.box input[type="submit"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 15px auto;
+    text-align: center;
+    border: 2px solid black;
+    padding: 8px 40px;
+    /* width: 200px; */
+    outline: none;
+    color: black;
+    border-radius: 15px;
+    transition: 0.25s;
+    cursor: pointer;
+}
+
+.box input[type="submit"]:hover {
+    /* background: linear-gradient( rgb(175, 171, 171),rgb(145, 217, 245)); */
+    background: #98acf8;
+    border-color: #82c59e;
+    box-shadow: 0 0 4px 2px white;
+}
+
+.field-icon {
+    float: right;
+    margin-right: 80px;
+    margin-top: -55px;
+    position: relative;
+    z-index: 2;
+    color: black;
+    cursor: pointer;
+}
+
+@media screen and (max-width: 800px) {
+    form {
+        width: 90% !important;
+        margin-left: 40% !important;
+        margin-top: 90% !important;
+    }
+    .box input[type="text"],
+    .box input[type="password"] {
+        border: none;
+        border: 2px solid white;
+        ;
+        border-radius: 5px;
+        background: none;
+        display: block;
+        margin: 20px auto;
+        text-align: center;
+        padding: 14px 10px;
+        width: 250px;
+        outline: none;
+        color: black;
+        transition: 0.25s;
+    }
+    .box input[type="text"]:focus,
+    .box input[type="password"]:focus {
+        width: 260px;
+        border-color: #82c59e;
+        box-shadow: 0 0 4px 2px white;
+    }
+    .btn {
+        border-radius: 5px;
+        font-size: small;
+        padding: 6px;
+        color: black !important;
+        font-weight: 500;
+        float: left;
+        margin-left: 10%;
+    }
+    .field-icon {
+        float: right;
+        margin-right: -10px !important;
+        margin-top: -55px;
+        position: relative;
+        z-index: 2;
+        color: black;
+        cursor: pointer;
+    }
+}
+
+.content-wrapper-dark {
+    background-color: rgba(27, 26, 26, 0.973);
+}
+
+.content-wrapper-light {
+    background-color: rgba(243, 234, 234, 0.973);
+}

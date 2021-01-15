@@ -1,0 +1,87 @@
+<div class="master-main-container col-sm-12 clearfix no-padding">
+
+    <div class="wrapper">
+        <header class="main-header">
+            <!-- Logo -->
+            <a href="vetologic.com" class="logo">
+                <!-- mini logo for sidebar mini 50x50 pixels -->
+                <span class="logo-mini"><b>O</b>cs</span>
+                <!-- logo for regular state and mobile devices -->
+                <span class="logo-lg"><b>O</b>nline<b>C</b>ampus<b>S</b>olution</span>
+            </a>
+            <!-- Header Navbar: style can be found in header.less -->
+            <nav class="navbar navbar-static-top">
+                <!-- Sidebar toggle button-->
+                <a href="#" class="sidebar-toggle" id="sidebar-toggle" data-toggle="push-menu" role="button">
+                    <span class="sr-only">Navigation</span>
+                </a>
+                <div class="navbar-custom-menu">
+                    <ul class="nav navbar-nav">
+                        <!-- User Account: style can be found in dropdown.less -->
+                        <li class="dropdown user user-menu">
+                            <a href="#" class="mr-3" data-toggle="dropdown" aria-expanded="false">
+                                <img src="assets/images/user1.png" class="user-image" alt="User Image">
+                                <span class="hidden-xs">{{displayName}}</span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <!-- User image -->
+                                <li class="user-header">
+                                    <img src="assets/images/user1.png" class="img-circle" alt="User Image">
+
+                                    <h6>
+                                        Logged in as : {{roleName}}<br>
+                                        <small>{{today | date:'MMM d y, h:mm:ss a'}} </small>
+                                    </h6>
+                                </li>
+                                <!-- Menu Footer-->
+                                <li class="user-footer">
+                                    <!-- <div>
+                    <a href="#" class="btn btn-primary btn-flat">Profile</a>
+                  </div> -->
+                                    <!-- routerLink="changeForgot" -->
+                                    <div>
+                                        <a (click)="show()" class="btn btn-primary btn-flat" id="chnbtn">Change
+                                            Password</a>
+                                    </div>
+                                    <div>
+                                        <a (click)='doLogout()' class="btn btn-primary btn-flat pull-right">Sign out</a>
+                                    </div>
+                                    <div>
+                                        <mat-slide-toggle class="example-margin" [color]="color" [checked]="checked" (change)="onChange($event)">
+                                            Slide me!
+                                        </mat-slide-toggle>
+                                    </div>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </header>
+        <!-- Creates Popup form will appear -->
+        <div [style.display]="showModal ? 'block' : 'none'" class="modal" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <form class="box">
+                        <h1 class="text-center login-title">Change Password</h1>
+                        <img class="profile-img" src="assets/images/changePwd.png" alt="">
+                        <!-- <input type="text"  placeholder="Enter Your Old Password" required autofocus> -->
+                        <input [type]="showOldPwd ? 'password' : 'text'" #oldPwd placeholder="Enter Old  Password" required>
+                        <span toggle="#password-field" class="fa fa-fw {{showOldPwd ? 'fa-eye-slash' : 'fa-eye'}} field-icon" (click)="showOldPwdMethod()"></span>
+
+
+                        <input [type]="showPwd ? 'password' : 'text'" #newPwd placeholder="Enter New Password" required>
+                        <span toggle="#password-field" class="fa fa-fw {{showPwd ? 'fa-eye-slash' : 'fa-eye'}} field-icon" (click)="showPwdMethod()"></span>
+                        <input type="submit" value="Submit" (click)='valid(oldPwd.value,newPwd.value)'>
+                        <input type="submit" value="Close" data-dismiss="modal" (click)="hide()">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="content-wrapper {{theme}}" style="min-height: auto;">
+            <!-- Content Header (Page header)  -->
+            <router-outlet></router-outlet>
+            <!-- /.content -->
+        </div>
+    </div>
+</div>

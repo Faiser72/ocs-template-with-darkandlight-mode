@@ -1,0 +1,215 @@
+<!-- <aside class="main-sidebar sidebar-dark-primary elevation-4"> -->
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar" style="height: auto;">
+        <!-- Sidebar user panel -->
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu tree" data-widget="tree">
+            <li>
+                <a routerLink="dashboard">
+                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
+                </a>
+            </li>
+            <li class="treeview">
+                <a>
+                    <i class="fa fa-cog"></i>
+                    <span>Master</span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a routerLink="institutehome"><i class="fa fa-angle-double-right"></i> Institution</a>
+                    </li>
+                    <li>
+                        <a routerLink="addstaffdesignation" *ngIf='isSuperAdminRole() || isStaffRole()'><i class="fa fa-angle-double-right"></i> Staff
+                            Designation</a>
+                    </li>
+                    <li>
+                        <a routerLink="addclassandsections"><i class="fa fa-angle-double-right"></i>
+                            ClassAndSections</a>
+                    </li>
+
+                    <li>
+                        <a routerLink="addclassandsubject"><i class="fa fa-angle-double-right"></i> ClassAndSubject</a>
+                    </li>
+
+                    <li>
+                        <a routerLink="addgrades"><i class="fa fa-angle-double-right"></i> Grades</a>
+                    </li>
+
+                    <li>
+                        <a routerLink="addexams" *ngIf='isSuperAdminRole()'><i class="fa fa-angle-double-right"></i> Exams</a>
+                    </li>
+                    <li>
+                        <a routerLink="addholiday" *ngIf='isSuperAdminRole()'><i class="fa fa-angle-double-right"></i> Holiday</a>
+                    </li>
+
+                    <li>
+                        <a routerLink="addevents" *ngIf='isSuperAdminRole()'><i class="fa fa-angle-double-right"></i> Events</a>
+                    </li>
+                    <li>
+                        <a routerLink="addfeemaster" *ngIf='isSuperAdminRole()'><i class="fa fa-angle-double-right"></i> Fee</a>
+                    </li>
+
+                    <li>
+                        <a routerLink="addfeessetting" *ngIf='isSuperAdminRole()'><i class="fa fa-angle-double-right"></i> FeesSetting</a>
+                    </li>
+
+                    <li>
+                        <a routerLink="paymentcategory" *ngIf='isSuperAdminRole()'><i class="fa fa-angle-double-right"></i>Payment Category</a>
+                    </li>
+
+                    <li>
+                        <a routerLink="receiptcategory" *ngIf='isSuperAdminRole()'><i class="fa fa-angle-double-right"></i>Receipt Category</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a>
+                    <i class="fa fa-user-o"></i>
+                    <span>Manage User</span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a routerLink="adduser" *ngIf='isSuperAdminRole()'><i class="fa fa-angle-double-right"></i> Add User</a></li>
+                    <li><a routerLink="listuser"><i class="fa fa-angle-double-right"></i>View User</a></li>
+                </ul>
+            </li>
+            <li class="treeview" *ngIf='isSuperAdminRole() || isAdminRole()'>
+                <a>
+                    <i class="fa fa-user-circle-o"></i>
+                    <span>Staff</span>
+                </a>
+                <ul class="treeview-menu" *ngIf='isSuperAdminRole() || isAdminRole()'>
+                    <li><a routerLink="staffhome/addstaff"><i class="fa fa-angle-double-right" ></i> Add Staff</a></li>
+                    <li><a routerLink="staffhome/liststaff"><i class="fa fa-angle-double-right"></i>View Staff</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a>
+                    <i class="fa fa-graduation-cap"></i>
+                    <span>Student</span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a routerLink="studenthome/addstudent" *ngIf='isAdminRole()'><i class="fa fa-angle-double-right"></i>Add Student</a>
+                    </li>
+                    <li><a routerLink="studenthome/liststudent"><i class="fa fa-angle-double-right"></i>Student
+                            Information</a>
+                    </li>
+                </ul>
+            </li>
+            <li *ngIf='isAdminRole() || isStaffRole()'>
+                <a routerLink="/default/assignmenthome"><i class="fa fa-question-circle"></i><span>Student
+                        Assignment</span></a>
+            </li>
+            <li *ngIf='isAdminRole() || isStaffRole()'>
+                <a routerLink="/default/lessonhome"><i class="fa fa-object-group"></i><span>Lesson Plan</span></a>
+            </li>
+            <li class="treeview" *ngIf='isAdminRole() || isStaffRole()'>
+                <a>
+                    <i class="fa fa-list-alt"></i>
+                    <span>Leave Application</span>
+                </a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a routerLink="/default/leavehome"><i class="fa fa-angle-double-right"></i><span>Pending Leaves</span></a>
+                        <a routerLink="/default/leavehome/approve"><i class="fa fa-angle-double-right"></i><span>Approved Leaves</span></a>
+                        <a routerLink="/default/leavehome/reject"><i class="fa fa-angle-double-right"></i><span>Rejected Leaves</span></a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a>
+                    <i class="fa fa-book"></i>
+                    <span>Library</span>
+                </a>
+                <ul class="treeview-menu" *ngIf="USER_ROLE === 'LIBRARY_ADMIN' || USER_ROLE === 'LIBRARY_STAFF'; else notLibAdminStaff">
+                    <li *ngIf="USER_ROLE === 'LIBRARY_ADMIN'"><a routerLink="library/librarycard"><i class="fa fa-angle-double-right"></i>Library Card</a>
+                    </li>
+                    <li *ngIf="USER_ROLE === 'LIBRARY_STAFF'"><a routerLink="library/librarycard"><i class="fa fa-angle-double-right"></i>Library Users</a>
+                    </li>
+                    <li *ngIf="USER_ROLE === 'LIBRARY_ADMIN'"><a routerLink="library/addbookshome"><i class="fa fa-angle-double-right"></i>Add Book</a></li>
+                    <li *ngIf="USER_ROLE === 'LIBRARY_STAFF'"><a routerLink="library/addbookshome"><i class="fa fa-angle-double-right"></i>Added Books</a></li>
+                    <li><a routerLink="library/issuebookshome"><i class="fa fa-angle-double-right"></i>Issue Book</a>
+                    </li>
+                    <li><a routerLink="library/returnbookshome"><i class="fa fa-angle-double-right"></i>Returned Book</a>
+                    </li>
+                    <li><a routerLink="library/searchbooks"><i class="fa fa-angle-double-right"></i>Search Book</a></li>
+                </ul>
+                <ng-template #notLibAdminStaff>
+                    <ul class="treeview-menu">
+                        <li><a routerLink="library/addbookshome"><i class="fa fa-angle-double-right"></i>Added
+                                Books</a></li>
+                        <li><a routerLink="library/issuebookshome"><i class="fa fa-angle-double-right"></i>Issued
+                                Books</a>
+                        </li>
+                        <li><a routerLink="library/returnbookshome"><i class="fa fa-angle-double-right"></i>Returned
+                                Books</a>
+                        </li>
+                        <li><a routerLink="library/searchbooks"><i class="fa fa-angle-double-right"></i>Search Book</a>
+                        </li>
+                    </ul>
+                </ng-template>
+            </li>
+
+            <li *ngIf='isStaffRole()'>
+                <a routerLink="/default/testhome"><i class="fa fa-paper-plane-o"></i><span>Test Result</span></a>
+            </li>
+            <li class="treeview" *ngIf='isAdminRole() || isStaffRole()'>
+                <a><i class="fa fa-clipboard"></i><span>Exam Management</span></a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a routerLink="quesbankhome">
+                            <i class="fa fa-angle-double-right"></i>Question Bank</a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a>
+                    <i class="fa fa-bus"></i>
+                    <span>Transport</span>
+                </a>
+                <ul class="treeview-menu">
+                    <li *ngIf='isSuperAdminRole() || isAdminRole()'><a routerLink="route/addroute"><i class="fa fa-angle-double-right"></i>Add Route
+                        </a>
+                    </li>
+                    <li><a routerLink="route/addlist"><i class="fa fa-angle-double-right"></i>View Bus Route
+                    </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="treeview" *ngIf='isAdminRole()'>
+                <a><i class="fa fa-inr"></i><span>Fee Management</span></a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a routerLink="/default/feedetails"><i class="fa fa-angle-double-right"></i>General Fee</a>
+                    </li>
+
+                    <li>
+                        <a routerLink="requestList"><i class="fa fa-angle-double-right"></i>Transport Fee</a>
+                    </li>
+
+                    <li>
+                        <a routerLink="paymenthistorylist"><i class="fa fa-angle-double-right"></i>Fee Paid List</a>
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <a routerLink="/default/notificationhome"><i class="fa fa-bell-o"></i> <span>Notification</span></a>
+            </li>
+
+            <li class="treeview" *ngIf='isSuperAdminRole()'>
+                <a><i class="fa fa-bank "></i><span>Accounts</span></a>
+                <ul class="treeview-menu">
+                    <li>
+                        <a routerLink="payment"><i class="fa fa-angle-double-right"></i>Payment</a>
+                    </li>
+                    <li>
+                        <a routerLink="receipt"><i class="fa fa-angle-double-right"></i>Receipt</a>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>
